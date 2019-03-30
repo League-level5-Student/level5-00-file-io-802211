@@ -13,12 +13,13 @@ public class FileDecryptor {
 	
 	public static void main(String[] args) {
 		
-		String file = "";
+	
 		try {
-			BufferedReader br = new BufferedReader(new FileReader("src/_02_File_Encrypt_Decrypt/FileEnvryptDecrypt.txt"));
-			file = br.readLine();
-			br.close();
-			
+			BufferedReader br = new BufferedReader(new FileReader("src/_02_File_Encrypt_Decrypt/FileEncryptDecrypt.txt"));
+			String file = br.readLine();
+			String decrypted = decryptor(file);
+		JOptionPane.showMessageDialog(null, "" + decrypted);
+		br.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -26,14 +27,12 @@ public class FileDecryptor {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String decrypted = decryptor(file);
-		JOptionPane.showMessageDialog(null, decrypted);
-	}
+			}
 	
 	static String decryptor(String s) {
-		
-		////Start HERE NEXT time\\\\
-		return s;
+	
+	String string = s.toLowerCase();
+		return string;
 	}
 	
 }
