@@ -1,8 +1,11 @@
 package _05_Pixel_Art_Save_State;
 
 import java.awt.Color;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.lang.reflect.Array;
 
 import javax.swing.JButton;
@@ -11,6 +14,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import _04_Serialization.SaveData;
+
 public class GridInputPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private JTextField windowWidthField;
@@ -18,7 +23,7 @@ public class GridInputPanel extends JPanel{
 	private JTextField rowsField;
 	private JTextField colsField;
 	private JButton submitButton;
-	private JButton saveButton;
+	//private JButton loadButton;
 			
 	PixelArtMaker pam;
 	
@@ -30,7 +35,7 @@ public class GridInputPanel extends JPanel{
 		rowsField = new JTextField(5);
 		colsField = new JTextField(5);
 		submitButton = new JButton("Submit");
-		saveButton = new JButton("Save");
+		//loadButton = new JButton("Load");
 		
 		add(new JLabel("screen width:"));
 		add(windowWidthField);
@@ -41,31 +46,26 @@ public class GridInputPanel extends JPanel{
 		add(new JLabel("\ttotal columns:"));
 		add(colsField);
 		add(submitButton);
-		add(saveButton);
+		//add(loadButton);
 		
 		submitButton.addActionListener((e)->submit());
-		saveButton.addActionListener((e)->save());
+		//loadButton.addActionListener((e)->load());
 	}
 	
-	private void save() {
-		PixelArtMaker p = new PixelArtMaker();
-		Pixel[][] a = p.getArray();
-		try {
-			FileWriter fw = new FileWriter("src/_05_Pixel_Art_Save_State/Pixel.txt");
-			for(int i = 0; i<a.length; i++) {
-				for(int j = 0; j<a[i].length; j++) {
-				Pixel x = a[i][j];
-				
-				////||!!!!start here!!!!||\\\\
-				
-			}
-				}
-			fw.close();
-		} catch (IOException f) {
-			// TODO Auto-generated catch block
-			f.printStackTrace();
-		}
-	}
+//	private static GridPanel load() {
+////		System.out.println("load");
+//		try (FileInputStream fis = new FileInputStream(new File("src/_05_Pixel_Art_Save_State/Pixel.txt")); ObjectInputStream ois = new ObjectInputStream(fis)) {
+//			return (GridPanel) ois.readObject();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//			return null;
+//		} catch (ClassNotFoundException e) {
+//			e.printStackTrace();
+//			return null;
+//		}
+// 
+//	}
+	
 	
 	private void submit() {
 		boolean valid = false;
